@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Real-time vehicle tracking and theft protection">
+    <title>Live Vehicle Tracker | ElegantRide Ethiopia</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Ethiopic:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="https://img.icons8.com/color/96/ethiopia.png" type="image/x-icon">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <i class="fas fa-car"></i>
+                    <span class="logo-text">ElegantRide <span class="ethiopia-text">Tracker</span></span>
+                </a>
+            </div>
+            <button class="nav-toggle" aria-label="toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#fleet">Our Fleet</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="tracker.html" class="active"><i class="fas fa-map-marker-alt"></i> Tracker</a></li>
+                    <li><a href="index.html#reservation" class="btn-reservation"><i class="fas fa-gift"></i> Book Now</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="flag-stripes">
+        <div class="stripe green"></div>
+        <div class="stripe yellow"></div>
+        <div class="stripe red"></div>
+    </div>
+    <main>
+        <section class="tracker-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="tracker-icon">
+                        <i class="fas fa-satellite"></i>
+                    </div>
+                    <h1>Live Vehicle Tracking System</h1>
+                    <p class="subtitle">Real-time GPS monitoring across Ethiopia</p>
+                    <div class="tracker-stats">
+                        <div class="stat">
+                            <i class="fas fa-car"></i>
+                            <span>12</span>
+                            <p>Vehicles Active</p>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>7</span>
+                            <p>Cities Covered</p>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>24/7</span>
+                            <p>Monitoring</p>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-history"></i>
+                            <span>30</span>
+                            <p>Day History</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="live-tracking">
+            <div class="container">
+                <div class="tracking-controls">
+                    <div class="controls-left">
+                        <h2><i class="fas fa-map"></i> Live Vehicle Locations</h2>
+                        <p class="update-time">Last updated: <span id="last-update">Just now</span></p>
+                    </div>
+                    <div class="controls-right">
+                        <button id="refresh-tracking" class="btn-primary">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                        <button id="filter-vehicles" class="btn-secondary">
+                            <i class="fas fa-filter"></i> Filter
+                        </button>
+                        <button id="report-theft" class="btn-alert">
+                            <i class="fas fa-exclamation-triangle"></i> Report Theft
+                        </button>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <div class="ethiopia-map" id="ethiopia-map">
+                        <iframe 
+                            src="https://www.openstreetmap.org/export/embed.html?bbox=38.68,8.98,38.82,9.08&layer=mapnik&marker=9.03,38.74"
+                            title="Ethiopia Map">
+                        </iframe>
+                        
+                        <div class="map-controls">
+                            <button class="map-btn" id="zoom-in" title="Zoom In">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                            <button class="map-btn" id="zoom-out" title="Zoom Out">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <button class="map-btn" id="reset-view" title="Reset View">
+                                <i class="fas fa-home"></i>
+                            </button>
+                            <button class="map-btn" id="fullscreen" title="Fullscreen">
+                                <i class="fas fa-expand"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="osm-attribution">
+                            © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors
+                        </div>
+                        
+                        <div class="map-overlay">
+                            <div class="city" id="addis-ababa" style="top: 50%; left: 50%;" data-city="addis-ababa">
+                                <div class="city-marker active">
+                                    <i class="fas fa-map-pin"></i>
+                                </div>
+                                <div class="city-label">Addis Ababa</div>
+                            </div>
+                            <div class="city" id="bahir-dar" style="top: 30%; left: 40%;" data-city="bahir-dar">
+                                <div class="city-marker">
+                                    <i class="fas fa-map-pin"></i>
+                                </div>
+                                <div class="city-label">Bahir Dar</div>
+                            </div>
+                            <div class="city" id="gondar" style="top: 25%; left: 35%;" data-city="gondar">
+                                <div class="city-marker">
+                                    <i class="fas fa-map-pin"></i>
+                                </div>
+                                <div class="city-label">Gondar</div>
+                            </div>
+                            <div class="city" id="hawassa" style="top: 70%; left: 55%;" data-city="hawassa">
+                                <div class="city-marker">
+                                    <i class="fas fa-map-pin"></i>
+                                </div>
+                                <div class="city-label">Hawassa</div>
+                            </div>
+                            <div class="city" id="mekelle" style="top: 35%; left: 60%;" data-city="mekelle">
+                                <div class="city-marker">
+                                    <i class="fas fa-map-pin"></i>
+                                </div>
+                                <div class="city-label">Mekelle</div>
+                            </div>
+                            <div class="city" id="dire-dawa" style="top: 55%; left: 65%;" data-city="dire-dawa">
+                                <div class="city-marker">
+                                    <i class="fas fa-map-pin"></i>
+                                </div>
+                                <div class="city-label">Dire Dawa</div>
+                            </div>
+                            <div class="city" id="jimma" style="top: 65%; left: 45%;" data-city="jimma">
+                                <div class="city-marker">
+                                    <i class="fas fa-map-pin"></i>
+                                </div>
+                                <div class="city-label">Jimma</div>
+                            </div>
+                            
+                            <div class="vehicle-marker" id="vehicle-1" style="top: 48%; left: 48%;" data-vehicle="mercedes-aa1234">
+                                <div class="marker active">
+                                    <i class="fas fa-car"></i>
+                                    <div class="marker-pulse"></div>
+                                </div>
+                                <div class="vehicle-tooltip">
+                                    <strong>Mercedes S-Class</strong><br>
+                                    License: AA-1234<br>
+                                    Status: On Trip<br>
+                                    Speed: 45 km/h<br>
+                                    Location: Bole, Addis Ababa
+                                </div>
+                            </div>
+                            <div class="vehicle-marker" id="vehicle-2" style="top: 52%; left: 52%;" data-vehicle="toyota-aa5678">
+                                <div class="marker">
+                                    <i class="fas fa-car"></i>
+                                    <div class="marker-pulse"></div>
+                                </div>
+                                <div class="vehicle-tooltip">
+                                    <strong>Toyota Land Cruiser</strong><br>
+                                    License: AA-5678<br>
+                                    Status: Parked<br>
+                                    Speed: 0 km/h<br>
+                                    Location: Piazza, Addis Ababa
+                                </div>
+                            </div>
+                            <div class="vehicle-marker" id="vehicle-3" style="top: 28%; left: 38%;" data-vehicle="bmw-bd9012">
+                                <div class="marker warning">
+                                    <i class="fas fa-car"></i>
+                                    <div class="marker-pulse warning"></div>
+                                </div>
+                                <div class="vehicle-tooltip">
+                                    <strong>BMW 7 Series</strong><br>
+                                    License: BD-9012<br>
+                                    Status: Moving<br>
+                                    Speed: 60 km/h<br>
+                                    Location: Bahir Dar City
+                                </div>
+                            </div>
+                            <div class="vehicle-marker" id="vehicle-4" style="top: 72%; left: 53%;" data-vehicle="range-hv3456">
+                                <div class="marker alert">
+                                    <i class="fas fa-car"></i>
+                                    <div class="marker-pulse alert"></div>
+                                </div>
+                                <div class="vehicle-tooltip">
+                                    <strong>Range Rover</strong><br>
+                                    License: HA-3456<br>
+                                    Status: Theft Alert<br>
+                                    Speed: 80 km/h<br>
+                                    Location: Hawassa Lake Area
+                                </div>
+                            </div>
+                            <div class="vehicle-marker" id="vehicle-5" style="top: 25%; left: 36%;" data-vehicle="vintage-bd5678">
+                                <div class="marker active">
+                                    <i class="fas fa-car"></i>
+                                    <div class="marker-pulse"></div>
+                                </div>
+                                <div class="vehicle-tooltip">
+                                    <strong>Vintage Mercedes</strong><br>
+                                    License: BD-5678<br>
+                                    Status: On Trip<br>
+                                    Speed: 40 km/h<br>
+                                    Location: Gondar City
+                                </div>
+                            </div>
+                            <div class="vehicle-marker" id="vehicle-6" style="top: 35%; left: 61%;" data-vehicle="hyundai-mk1234">
+                                <div class="marker">
+                                    <i class="fas fa-car"></i>
+                                    <div class="marker-pulse"></div>
+                                </div>
+                                <div class="vehicle-tooltip">
+                                    <strong>Hyundai Sonata</strong><br>
+                                    License: MK-1234<br>
+                                    Status: Parked<br>
+                                    Speed: 0 km/h<br>
+                                    Location: Mekelle City Center
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="city-info" id="city-info">
+                            <div class="city-info-header">
+                                <div class="city-info-title" id="city-info-title">City Info</div>
+                                <button class="city-info-close" id="city-info-close">&times;</button>
+                            </div>
+                            <div class="city-info-details" id="city-info-details"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="map-legend">
+                        <h3><i class="fas fa-key"></i> Legend</h3>
+                        <div class="legend-item">
+                            <div class="legend-color active"></div>
+                            <span>Active & Moving</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color"></div>
+                            <span>Parked/Idle</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color warning"></div>
+                            <span>High Speed</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color alert"></div>
+                            <span>Theft Alert</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color offline"></div>
+                            <span>Offline</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #D4AF37;"></div>
+                            <span>City Location</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="vehicle-list-container">
+                    <h3><i class="fas fa-list"></i> Active Vehicles</h3>
+                    <div class="vehicle-list" id="vehicle-list"></div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="theft-history">
+            <div class="container">
+                <div class="section-header">
+                    <h2><i class="fas fa-history"></i> Theft Alert History</h2>
+                    <p class="section-subtitle">Recent security incidents and resolutions</p>
+                </div>
+                <div class="history-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Vehicle</th>
+                                <th>Location</th>
+                                <th>Status</th>
+                                <th>Resolution</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="theft-history-list"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        
+        <section class="tracking-features">
+            <div class="container">
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-history"></i>
+                        </div>
+                        <h3>30-Day History</h3>
+                        <p>View complete movement history for all vehicles</p>
+                        <button class="btn-secondary view-history">View History</button>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <h3>Alert Settings</h3>
+                        <p>Configure theft alerts and notifications</p>
+                        <button class="btn-secondary configure-alerts">Configure</button>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-download"></i>
+                        </div>
+                        <h3>Export Reports</h3>
+                        <p>Download tracking data and reports</p>
+                        <button class="btn-secondary export-data">Export</button>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Mobile App</h3>
+                        <p>Track vehicles on the go with our mobile app</p>
+                        <button class="btn-secondary get-app">Get App</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-header">
+                <div class="footer-logo">
+                    <i class="fas fa-satellite"></i>
+                    <span>ElegantRide Tracking System</span>
+                </div>
+                <p class="footer-tagline">24/7 Vehicle Monitoring Across Ethiopia</p>
+            </div>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Emergency Contacts</h3>
+                    <div class="emergency-contacts">
+                        <div class="contact-item">
+                            <i class="fas fa-police-car"></i>
+                            <div>
+                                <p>Ethiopian Police</p>
+                                <p class="contact-number">991</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <div>
+                                <p>Tracking Support</p>
+                                <p class="contact-number">+251 911 234 567</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-headset"></i>
+                            <div>
+                                <p>24/7 Customer Service</p>
+                                <p class="contact-number">+251 911 987 654</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#fleet">Our Fleet</a></li>
+                        <li><a href="about.html">About Ethiopia</a></li>
+                        <li><a href="tracker.html">Live Tracker</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Tracking Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Theft Protection Policy</a></li>
+                        <li><a href="#">GPS Tracking FAQ</a></li>
+                        <li><a href="#">Insurance Options</a></li>
+                        <li><a href="#">Safety Guidelines</a></li>
+                        <li><a href="#">Emergency Procedures</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Download App</h3>
+                    <div class="app-links">
+                        <a href="#" class="app-link">
+                            <i class="fab fa-google-play"></i> Google Play
+                        </a>
+                        <a href="#" class="app-link">
+                            <i class="fab fa-app-store"></i> App Store
+                        </a>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="security-badges">
+                    <span class="badge"><i class="fas fa-shield-alt"></i> GPS Protected</span>
+                    <span class="badge"><i class="fas fa-lock"></i> Secure Payments</span>
+                    <span class="badge"><i class="fas fa-car"></i> Insured Vehicles</span>
+                </div>
+                <p>&copy; 2023 ElegantRide Ethiopia. All rights reserved. | Real-time tracking across Ethiopia</p>
+                <p class="footer-note">All vehicles equipped with GPS tracking devices for your security</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

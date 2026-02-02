@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact ElegantRide Ethiopia for wedding car reservation inquiries">
+    <title>Contact Us | ElegantRide Ethiopia</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <i class="fas fa-car"></i>
+                    <span class="logo-text">ElegantRide <span class="ethiopia-text">Ethiopia</span></span>
+                </a>
+            </div>
+            <button class="nav-toggle" aria-label="toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#fleet">Our Fleet</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                    <li><a href="tracker.html" class="tracker-link"><i class="fas fa-map-marker-alt"></i> Tracker</a></li>
+                    <li><a href="index.html#reservation" class="btn-reservation">Reserve Now</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="flag-stripes">
+        <div class="stripe green"></div>
+        <div class="stripe yellow"></div>
+        <div class="stripe red"></div>
+    </div>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <h1>Contact Us</h1>
+                <p>Get in touch with our wedding transportation specialists across Ethiopia</p>
+            </div>
+        </section>
+
+        <section class="contact-content">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-form-container">
+                        <h2>Send us a Message</h2>
+                        <form id="contact-form" class="contact-form">
+                            <div class="form-group">
+                                <label for="contact-name">Full Name *</label>
+                                <input type="text" id="contact-name" name="contact-name" required placeholder="Your name">
+                                <div class="error-message" id="contact-name-error"></div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contact-email">Email Address *</label>
+                                <input type="email" id="contact-email" name="contact-email" required placeholder="Your email">
+                                <div class="error-message" id="contact-email-error"></div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contact-phone">Phone Number</label>
+                                <input type="tel" id="contact-phone" name="contact-phone" placeholder="Your phone number">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Subject *</label>
+                                <select id="subject" name="subject" required>
+                                    <option value="">Select a subject</option>
+                                    <option value="reservation">Reservation Inquiry</option>
+                                    <option value="pricing">Pricing Information</option>
+                                    <option value="fleet">Fleet Questions</option>
+                                    <option value="tracking">GPS Tracking Inquiry</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                <div class="error-message" id="subject-error"></div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Message *</label>
+                                <textarea id="message" name="message" rows="5" required placeholder="Your message..."></textarea>
+                                <div class="error-message" id="message-error"></div>
+                            </div>
+                            
+                            <button type="submit" class="btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                    
+                    <div class="contact-info-container">
+                        <h2>Contact Information</h2>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <h3>Our Office</h3>
+                                    <p>Bole Road<br>Addis Ababa, Ethiopia</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <div>
+                                    <h3>Phone Number</h3>
+                                    <p>+251 911 234 567</p>
+                                    <p class="contact-note">Monday-Friday, 9am-6pm EAT</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <h3>Email Address</h3>
+                                    <p>info@elegantride.et</p>
+                                    <p class="contact-note">We respond within 2 hours</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-clock"></i>
+                                <div>
+                                    <h3>Business Hours</h3>
+                                    <p>Monday - Friday: 9am - 6pm</p>
+                                    <p>Saturday: 10am - 4pm</p>
+                                    <p>Sunday: 10am - 2pm</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-section">
+                            <h3>Frequently Asked Questions</h3>
+                            <div class="faq-item">
+                                <button class="faq-question">How far in advance should I book?<i class="fas fa-chevron-down"></i></button>
+                                <div class="faq-answer">
+                                    <p>We recommend booking at least 3-6 months in advance, especially for popular wedding dates in spring and fall.</p>
+                                </div>
+                            </div>
+                            <div class="faq-item">
+                                <button class="faq-question">What is your cancellation policy?<i class="fas fa-chevron-down"></i></button>
+                                <div class="faq-answer">
+                                    <p>Cancellations made at least 30 days before the wedding receive a full refund. Between 14-30 days, we refund 50%. Less than 14 days is non-refundable.</p>
+                                </div>
+                            </div>
+                            <div class="faq-item">
+                                <button class="faq-question">Do you provide decorations?<i class="fas fa-chevron-down"></i></button>
+                                <div class="faq-answer">
+                                    <p>Yes! We offer complimentary "Just Married" signs and ribbon decorations. Custom decorations can be arranged for an additional fee.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="map-section">
+            <div class="container">
+                <h2>Find Us in Addis Ababa</h2>
+                <div class="simple-map">
+                    <div class="map-content">
+                        <div class="map-marker">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="map-address">
+                            <h3>ElegantRide Ethiopia Headquarters</h3>
+                            <p>Bole Road, Addis Ababa</p>
+                            <p>Parking available in the rear lot</p>
+                            <p class="contact-note">Also serving: Bahir Dar, Gondar, Hawassa, Mekelle, Dire Dawa, Jimma</p>
+                        </div>
+                        <div class="map-img">
+                            <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Map location">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-header">
+                <div class="footer-logo">
+                    <i class="fas fa-car"></i>
+                    <span>ElegantRide Ethiopia</span>
+                </div>
+                <p class="footer-tagline">Bringing Ethiopian tradition to modern wedding celebrations</p>
+            </div>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <p>Bole Road, Addis Ababa</p>
+                                <p class="contact-note">Also serving: Bahir Dar, Gondar, Hawassa, Mekelle</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <p>+251 911 234 567</p>
+                                <p class="contact-note">24/7 Customer Support</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <p>info@elegantride.et</p>
+                                <p class="contact-note">Response within 2 hours</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#fleet">Our Fleet</a></li>
+                        <li><a href="about.html">About Ethiopia</a></li>
+                        <li><a href="tracker.html">Theft Tracker</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Security & Tracking</h3>
+                    <ul class="footer-links">
+                        <li><a href="tracker.html">Live Vehicle Tracker</a></li>
+                        <li><a href="#">Theft Protection Policy</a></li>
+                        <li><a href="#">GPS Tracking FAQ</a></li>
+                        <li><a href="#">Insurance Options</a></li>
+                        <li><a href="#">Safety Guidelines</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="security-badges">
+                    <span class="badge"><i class="fas fa-shield-alt"></i> GPS Protected</span>
+                    <span class="badge"><i class="fas fa-lock"></i> Secure Payments</span>
+                    <span class="badge"><i class="fas fa-car"></i> Insured Vehicles</span>
+                </div>
+                <p>&copy; 2023 ElegantRide Ethiopia. All rights reserved. | Prices in Ethiopian Birr (ETB)</p>
+                <p class="footer-note">All vehicles equipped with GPS tracking devices for your security</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="contact-confirmation" class="modal">
+        <div class="modal-content confirmation">
+            <button class="close-modal">&times;</button>
+            <h2>Message Sent!</h2>
+            <div class="modal-body">
+                <i class="fas fa-check-circle"></i>
+                <p>Thank you for your message! We'll get back to you within 2 hours.</p>
+                <button id="close-contact-confirmation" class="btn-primary">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
